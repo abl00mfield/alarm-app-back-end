@@ -20,7 +20,7 @@ const alarmSchema = new moongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Tone",
     },
-    snooze: {
+    snoozeOn: {
       type: Boolean,
       default: false,
     },
