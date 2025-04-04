@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const Tone = require("../modesl/tone.js");
+const Tone = require("../models/tone.js");
 
 //GET index route /tones/
 //returns all default tones in the database
