@@ -69,7 +69,7 @@ const seedTones = async () => {
         },
         {
           toneName: "Toy Telephone",
-          fileUrl: "/sounds/classic-alarm.wav",
+          fileUrl: "/sounds/toy-telephone.wav",
           uploadedBy: null,
           isDefault: true,
         },
@@ -81,7 +81,7 @@ const seedTones = async () => {
         },
         {
           toneName: "Warning alarm",
-          fileUrl: "/sounds/warming-alarm.wav",
+          fileUrl: "/sounds/warning-alarm.wav",
           uploadedBy: null,
           isDefault: true,
         },
