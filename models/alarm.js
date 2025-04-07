@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const alarmSchema = new moongoose.Schema(
+const alarmSchema = new mongoose.Schema(
   {
     owner: {
       type: mongoose.Schema.Types.ObjectId,
