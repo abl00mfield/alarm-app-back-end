@@ -27,7 +27,7 @@ const router = express.Router();
       res.status(500).json({ err: err.message });
     }
   });
-  
+
   router.get("/:alarmId", verifyToken, async (req, res) => {
     try {
      const alarm = await Alarm.findById(req.params.alarmId).populate([
@@ -38,6 +38,29 @@ const router = express.Router();
     } catch (err) {
       res.status(500).json({ err: err.message });
     }
+  });
+
+  router.put("/:alarmId", verifyToken, async (req, res) => {
+    try {
+      const alarm = await Alarm.findById(req.params.alarmId).populate ('owner');
+      if (!alarm) {
+        return res.status(404).send("Alarm not found");
+      }
+
+      if (!alarm.owner|| !alarm.owner.equals(req.user._id)) {
+          return res.status(403).send("You're not allowed to do that!");
+        }
+        const updatedAlarm = await Alarm.findByIdAndUpdate(
+            req.params.alarmId,
+            req.body,
+            { new: true }
+        );
+        updatedAlarm._doc.owner = req.user;
+        res.status(200).json(updatedAlarm);
+        } catch (err) {
+            console.log(err);
+        res.status(500).json({ err: err.message });
+  }
   });
 
 module.exports = router;
