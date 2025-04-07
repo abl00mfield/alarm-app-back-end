@@ -25,6 +25,10 @@ JWT_SECRET=supersecret
 
 Start the app in your terminal with:
 
-``` sh
+```sh
 npm run dev
 ```
+
+## Resources
+
+sounds from https://mixkit.co/free-sound-effects/alarm/
