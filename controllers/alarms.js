@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 
-// add routes here
+
  router.post("/", verifyToken, async (req, res) => {
     try {
         req.body.owner = req.user._id;
@@ -19,8 +19,9 @@ const router = express.Router();
   router.get("/", verifyToken, async (req, res) => {
     try {
       const alarms = await Alarm.find({})
-        .populate("owner")
-        .sort({ createdAt: "desc" });
+        .populate("owner" )
+        .populate("tone")
+        .sort({ time: "asc" });
       res.status(200).json(alarms);
     } catch (error) {
         console.log(error);
@@ -32,7 +33,7 @@ const router = express.Router();
     try {
      const alarm = await Alarm.findById(req.params.alarmId).populate([
         "owner",
-        'comments.owner',
+       
       ]);
       res.status(200).json(alarm);
     } catch (err) {
@@ -42,10 +43,11 @@ const router = express.Router();
 
   router.put("/:alarmId", verifyToken, async (req, res) => {
     try {
-      const alarm = await Alarm.findById(req.params.alarmId).populate ('owner');
+      const alarm = await Alarm.findById(req.params.alarmId);
       if (!alarm) {
         return res.status(404).send("Alarm not found");
       }
+    
 
       if (!alarm.owner|| !alarm.owner.equals(req.user._id)) {
           return res.status(403).send("You're not allowed to do that!");
@@ -62,5 +64,33 @@ const router = express.Router();
         res.status(500).json({ err: err.message });
   }
   });
+
+  router.delete("/:alarmId", verifyToken, async (req, res) => {
+    try {
+      const alarm = await Alarm.findById(req.params.alarmId);
+  
+      if (!alarm.owner.equals(req.user._id)) {
+        return res.status(403).send("You're not allowed to do that!");
+      }
+  
+      const deletedAlarm = await Alarm.findByIdAndDelete(req.params.alarmId);
+      res.status(200).json(deletedAlarm);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+ 
+     
+     
+     
+       
+  
+  
+
+  
+
+
+
 
 module.exports = router;
