@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-const alarmSchema = new moongoose.Schema(
+
+const alarmSchema = new mongoose.Schema(
   {
     owner: {
       type: mongoose.Schema.Types.ObjectId,
@@ -28,8 +29,11 @@ const alarmSchema = new moongoose.Schema(
       type: Boolean,
       required: true,
     },
+    
   },
-  { timestamps: true }
+  
+
+  { timestamps: true },
 );
 
 const Alarm = mongoose.model("Alarm", alarmSchema);
