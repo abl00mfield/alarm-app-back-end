@@ -27,5 +27,17 @@ const router = express.Router();
       res.status(500).json({ err: err.message });
     }
   });
+  
+  router.get("/:alarmId", verifyToken, async (req, res) => {
+    try {
+     const alarm = await Alarm.findById(req.params.alarmId).populate([
+        "owner",
+        'comments.owner',
+      ]);
+      res.status(200).json(alarm);
+    } catch (err) {
+      res.status(500).json({ err: err.message });
+    }
+  });
 
 module.exports = router;

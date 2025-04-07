@@ -1,5 +1,19 @@
 const mongoose = require("mongoose");
 
+const commentSchema= new mongoose.Schema(
+  {
+    text: {
+      type: String,
+      required: true
+    },
+    owner: { 
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'User'
+     }
+  },
+  { timestamps: true }
+);
+
 const alarmSchema = new mongoose.Schema(
   {
     owner: {
@@ -28,8 +42,11 @@ const alarmSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    comments: [commentSchema],
   },
-  { timestamps: true }
+  
+
+  { timestamps: true },
 );
 
 const Alarm = mongoose.model("Alarm", alarmSchema);
