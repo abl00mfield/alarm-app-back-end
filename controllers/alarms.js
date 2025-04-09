@@ -8,7 +8,8 @@ router.post("/", verifyToken, async (req, res) => {
     req.body.owner = req.user._id;
     const alarm = await Alarm.create(req.body);
     alarm._doc.owner = req.user;
-    res.status(201).json(alarm);
+    const popluatedAlarm = await alarm.populate("tone");
+    res.status(201).json(popluatedAlarm);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
