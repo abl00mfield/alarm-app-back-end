@@ -10,7 +10,9 @@ const Tone = require("../models/tone.js");
 
 router.get("/", async (req, res) => {
   try {
-    const tones = await Tone.find({ isDefault: true });
+    const tones = await Tone.find({ isDefault: true }).sort({
+      toneName: "asc",
+    });
     res.status(200).json(tones);
   } catch (error) {
     console.error("Error fetching default tones");
