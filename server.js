@@ -12,7 +12,8 @@ const authRouter = require("./controllers/auth");
 const testJwtRouter = require("./controllers/test-jwt");
 const usersRouter = require("./controllers/users");
 const tonesRouter = require("./controllers/tones");
-const alarmsRouter = require('./controllers/alarms');
+const alarmsRouter = require("./controllers/alarms");
+const PORT = process.env.PORT || 3000;
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI);
@@ -27,7 +28,6 @@ app.use(express.json());
 app.use(logger("dev"));
 app.use(express.static("public")); //sounds are stored in public folder
 
-
 // Routes
 app.use("/auth", authRouter);
 app.use("/test-jwt", testJwtRouter);
@@ -35,6 +35,6 @@ app.use("/users", usersRouter);
 app.use("/tones", tonesRouter);
 app.use("/alarms", alarmsRouter);
 // Start the server and listen on port 3000
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("The express app is ready!");
 });
