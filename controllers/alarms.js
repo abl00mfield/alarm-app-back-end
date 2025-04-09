@@ -7,8 +7,9 @@ router.post("/", verifyToken, async (req, res) => {
   try {
     req.body.owner = req.user._id;
     const alarm = await Alarm.create(req.body);
-    alarm._doc.owner = req.user;
-    const popluatedAlarm = await alarm.populate("tone");
+    const popluatedAlarm = await alarm.populate(["tone", "owner"]);
+    popluatedAlarm._doc.owner = req.user;
+
     res.status(201).json(popluatedAlarm);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -16,9 +17,8 @@ router.post("/", verifyToken, async (req, res) => {
 });
 router.get("/", verifyToken, async (req, res) => {
   try {
-    const alarms = await Alarm.find({})
-      .populate("owner")
-      .populate("tone")
+    const alarms = await Alarm.find({ owner: req.user._id })
+      .populate(["owner", "tone"])
       .sort({ time: "asc" });
     res.status(200).json(alarms);
   } catch (error) {

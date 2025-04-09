@@ -7,25 +7,15 @@ const fixTone = async () => {
     await mongoose.connect(process.env.MONGODB_URI);
     console.log("Connected to MongoDB");
 
-    const updatedTone = await Tone.findOneAndUpdate(
-      { toneName: "Toy Telephone" },
-      { fileUrl: "/sounds/toy-telephone.wav" }, // ✅ corrected path
+    const updatedTone = await Tone.findByIdAndUpdate(
+      "67f063e0e4cc4da493222d53",
+      { toneName: "Old Telephone" },
+
       { new: true } // return the updated document
     );
 
     if (updatedTone) {
       console.log("✅ Tone updated:", updatedTone);
-    } else {
-      console.log("⚠️ Tone not found.");
-    }
-    const updatedTone2 = await Tone.findOneAndUpdate(
-      { toneName: "Warning alarm" },
-      { fileUrl: "/sounds/warning-alarm.wav" }, // ✅ corrected path
-      { new: true } // return the updated document
-    );
-
-    if (updatedTone2) {
-      console.log("✅ Tone updated:", updatedTone2);
     } else {
       console.log("⚠️ Tone not found.");
     }
