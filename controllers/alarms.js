@@ -53,7 +53,8 @@ router.put("/:alarmId", verifyToken, async (req, res) => {
       req.params.alarmId,
       req.body,
       { new: true }
-    );
+    ).populate("tone");
+
     updatedAlarm._doc.owner = req.user;
     res.status(200).json(updatedAlarm);
   } catch (err) {
