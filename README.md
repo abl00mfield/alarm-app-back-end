@@ -49,5 +49,7 @@ It was created to support productivity and wellness. Alarms and reminders are a 
  * Cloud Sync & Backup – Sync alarms and settings across devices.
 
  ## Links
- [Alarm-app-backend](https://github.com/abl00mfield/alarm-app-back-end)
- (VITE_BACK_END_SERVER_URL=https://alarmmate-e356a4b14b23.herokuapp.com/)
+
+ [GitHub Alarm-app-backend](https://github.com/abl00mfield/alarm-app-back-end)
+ 
+ [deployed backend](https://alarmmate-e356a4b14b23.herokuapp.com/)
