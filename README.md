@@ -1,34 +1,53 @@
-# Express JWT Auth Template
+# ⏰ Alarm App - Backend
+![screenshot home page](public/screenshot.png)
+It was created to support productivity and wellness. Alarms and reminders are a big part of that, so we built a system that not only lets users set alarms but also ensures data privacy and user control through secure authentication.
 
-## About
+## Features
+* User authentication via JWT.
+* CRUD operations for alarms.
+* Owner-based access control.
+* Mongoose models and MongoDB database.
+* Middleware for protected routes.
 
-This repo is about the back-end for project 3.
+## Technologies Used
 
-## Getting started
+* Node.js
+* Express
+* MongoDB, Mongoose
+* Json Web Tokens (JWT)
+* Postman
+* dotenv
+* Morgan
+* CORS
 
-Fork and clone this repository to your local machine.
+## Project planning:
+[Project planning link](https://trello.com/b/A0aIpfsD/alarm-application)
 
-After moving into the cloned directory, run `npm i` to download the dependencies.
+## Attributions:
+* [Trello](https://trello.com)
+* [mixkit.co](https://mixkit.co/free-sound-effects/alarm/)
+* [flaticon](https://www.flaticon.com/free-icons/clock)
+* [MongoDB](https://www.mongodb.com/)
+* [Postman](https://web.postman.com/)
 
-Create a `.env` file in the root of the project:
+## Using Postman for testing Authentication
+![screenshot sign-up](public/sign-up.png)
+![screenshot create alarm](public/create.png)
+![screenshot Read](public/read.png)
+![screenshot show](public/show.png)
+![screenshot update](public/update.png)
+![screenshot delete](public/delete.png)
 
-```bash
-touch .env
-```
+## Future Improvements
 
-and add your MongoDB URI and a secret JWT string to it. Your MongoDB URI will look something like the first entry, but with your username and password:
+ * Sleep Tracking Integration – Track sleep cycles via phone sensors or wearables.
+ * Custom Alarm Tones – Upload or record personal audio for alarms.
+ * Progressive Volume Increase – Gradual volume rise to wake users gently.
+ * Shake to Snooze / Dismiss – Add motion-based snooze/dismiss controls.
+ * Recurring Alarms with Flex Rules – e.g., Every other Monday, or skip holidays.
+ * Voice Commands – Set or stop alarms with voice (integrate with Google Assistant/Siri).
+ * Cloud Sync & Backup – Sync alarms and settings across devices.
 
-```plaintext
-MONGODB_URI=mongodb+srv://<username>:<password>@sei.azure.mongodb.net/myApp?retryWrites=true
-JWT_SECRET=supersecret
-```
-
-Start the app in your terminal with:
-
-```sh
-npm run dev
-```
-
-## Resources
-
-sounds from https://mixkit.co/free-sound-effects/alarm/
+ ## Links
+ [Alarm-app-backend](https://github.com/abl00mfield/alarm-app-back-end)
+ (VITE_BACK_END_SERVER_URL=https://alarmmate-e356a4b14b23.herokuapp.com/)
