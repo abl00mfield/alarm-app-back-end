@@ -28,6 +28,10 @@ const alarmSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    snoozeTime: {
+      type: Number,
+      default: 9,
+    },
   },
 
   { timestamps: true }
